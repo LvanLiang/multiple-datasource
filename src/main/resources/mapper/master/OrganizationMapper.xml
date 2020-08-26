@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liang.mapper.master.OrganizationMapper">
+
+  <select id="getById" resultType="com.liang.domain.OrganizationVO">
+         select id, `name`, category, region_code, region_name, region_nodes, address, email, website, brief,
+                contact_person, contact_phone, tag,
+                 case category when 1 then '省'
+                              when 2 then '市州'
+                              when 3 then '县'
+                 end as categoryName
+         from organization where id=#{id}
+   </select>
+
+</mapper>
